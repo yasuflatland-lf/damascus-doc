@@ -155,3 +155,5 @@ Elements required for assets. Search, Comments, Rating, Activities, Related asse
 | workflow (TBI) | This field enables workflow. For now, this is always true and workflow is always enabled.
 | generateActivity | This field enables activity for the activity portlet. The default value is `false`.
 | trash (TBI) | This field enables trash (logical deletion). For now, this is always true and trash is always enabled.
+| advancedSearch | This field enables Advanced Search, which allows searching each field independently.
+| exportExcel | This field enables exporting model records into an excel file.
