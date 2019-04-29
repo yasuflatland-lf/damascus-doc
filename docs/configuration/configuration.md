@@ -6,7 +6,7 @@ has_children: true
 permalink: /docs/configuration.html
 ---
 # Configuration
-This page explains how to configure ```base.json``` for scaffoldings. When you run ```damascus -init```, damascus creates the template of ```base.json``` file.
+This page explains how to configure ```base.json``` for scaffoldings. When you run ```damascus init```, damascus creates the template of ```base.json``` file.
 
 Some of the fields have not been enabled because they've not been implemented yet. Invalid fields are tagged *TBI* (To be implemented) in this document.
 
@@ -17,7 +17,7 @@ These values are defined once in ```base.json```.
 | :---- | :------ |
 | projectName | Project name. Damascus will create a folder based on this name. The name should be CamelCase, "**Todo**",  "**Event**" , e.g. |
 | packageName | The package name of this project. |
-| liferay Version | This is taken from the field of ```-v``` in ```damascus -init``` command. ```70``` means Liferay 7.0 / DXP. The default as of 2017 June is ```70```. This will be always the latest version in the future when a new version of Liferay is released. |
+| liferay Version | This is taken from the field of ```-v``` in ```damascus init``` command. ```70``` means Liferay 7.0 / DXP. The default as of 2017 June is ```70```. This will be always the latest version in the future when a new version of Liferay is released. |
 | applications | This field contains ```1...N``` numbers of application element, which represent each model of ```service.xml``` of Service. For more details of ```service.xml```, please see [SERVICE BUILDER](https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/service-builder) |
 
 ---

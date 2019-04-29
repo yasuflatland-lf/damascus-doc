@@ -11,7 +11,7 @@ permalink: /docs/gettingstarted/step2.html
 Run Damascus as follows
 
 ```bash
-damascus -init Todo -p com.liferay.sb.test -v 7.1
+damascus init -c Todo -p com.liferay.sb.test -v 7.1
 ```
 
 Under the ```todo``` folder, ```base.json``` will be generated.
@@ -23,7 +23,7 @@ Basic configrations are already configured in ```base.json``` , so let's create 
 Go to ```todo``` directory and run commands as follows.
 
 ```bash
-damascus -create
+damascus create
 ```
 
 This command will create a service and a portlet as follows.
