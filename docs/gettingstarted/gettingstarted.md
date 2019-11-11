@@ -14,7 +14,7 @@ Create a folder, ```lrworkspace``` and go to the directory. Open up a console an
 ```bash
 mkdir lrworkspace
 cd lrworkspace
-blade init -v 7.1
+blade init -v 7.2
 ```
 
 It will generate a Liferay workspace under the directory. Then go to the modules directory.

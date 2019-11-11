@@ -5,6 +5,7 @@ nav_order: 2
 permalink: /installation.html
 ---
 ## Requirements
+- Liferay 7.2 CE GA1 and higher.
 - Liferay 7.1 CE GA1 and higher.
 - Liferay 7.0 CE GA4 and Liferay DXP SP3 or higher versions.
 - Java 1.8 or above

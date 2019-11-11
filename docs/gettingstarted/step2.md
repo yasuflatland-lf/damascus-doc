@@ -11,7 +11,7 @@ permalink: /docs/gettingstarted/step2.html
 Run Damascus as follows
 
 ```bash
-damascus init -c Todo -p com.liferay.sb.test -v 7.1
+damascus init -c Todo -p com.liferay.sb.test -v 7.2
 ```
 
 Under the ```todo``` folder, ```base.json``` will be generated.
@@ -43,25 +43,26 @@ This command will create a service and a portlet as follows.
 │                       └── sb
 │                           └── test
 │                               ├── constants
+│                               │   ├── TodoConstants.java
 │                               │   └── TodoPortletKeys.java
 │                               ├── exception
 │                               │   ├── NoSuchTodoException.java
-│                               │   ├── TodoValidateException.java
-│                               │   └── TodoValidateExceptionException.java
+│                               │   └── TodoValidateException.java
 │                               ├── model
 │                               │   ├── Todo.java
 │                               │   ├── TodoModel.java
 │                               │   ├── TodoSoap.java
 │                               │   └── TodoWrapper.java
-│                               ├── service
-│                               │   ├── TodoLocalService.java
-│                               │   ├── TodoLocalServiceUtil.java
-│                               │   ├── TodoLocalServiceWrapper.java
-│                               │   └── persistence
-│                               │       ├── TodoPersistence.java
-│                               │       └── TodoUtil.java
-│                               └── social
-│                                   └── TodoActivityKeys.java
+│                               └── service
+│                                   ├── TodoLocalService.java
+│                                   ├── TodoLocalServiceUtil.java
+│                                   ├── TodoLocalServiceWrapper.java
+│                                   ├── TodoService.java
+│                                   ├── TodoServiceUtil.java
+│                                   ├── TodoServiceWrapper.java
+│                                   └── persistence
+│                                       ├── TodoPersistence.java
+│                                       └── TodoUtil.java
 ├── todo-service
 │   ├── bnd.bnd
 │   ├── build.gradle
@@ -73,40 +74,48 @@ This command will create a service and a portlet as follows.
 │           │       └── liferay
 │           │           └── sb
 │           │               └── test
+│           │                   ├── internal
+│           │                   │   ├── search
+│           │                   │   │   └── TodoIndexer.java
+│           │                   │   ├── security
+│           │                   │   │   └── permission
+│           │                   │   │       └── resource
+│           │                   │   │           ├── TodoModelResourcePermissionRegistrar.java
+│           │                   │   │           └── TodoPortletResourcePermissionRegistrar.java
+│           │                   │   └── trash
+│           │                   │       └── TodoTrashHandler.java
 │           │                   ├── model
 │           │                   │   └── impl
 │           │                   │       ├── TodoBaseImpl.java
 │           │                   │       ├── TodoCacheModel.java
 │           │                   │       ├── TodoImpl.java
 │           │                   │       └── TodoModelImpl.java
-│           │                   ├── service
-│           │                   │   ├── base
-│           │                   │   │   └── TodoLocalServiceBaseImpl.java
-│           │                   │   ├── impl
-│           │                   │   │   └── TodoLocalServiceImpl.java
-│           │                   │   ├── permission
-│           │                   │   │   ├── TodoPermissionChecker.java
-│           │                   │   │   └── TodoResourcePermissionChecker.java
-│           │                   │   ├── persistence
-│           │                   │   │   └── impl
-│           │                   │   │       └── TodoPersistenceImpl.java
-│           │                   │   ├── util
-│           │                   │   │   ├── ServiceProps.java
-│           │                   │   │   ├── TodoIndexer.java
-│           │                   │   │   └── TodoValidator.java
-│           │                   │   └── workflow
-│           │                   │       ├── TodoWorkflowHandler.java
-│           │                   │       └── TodoWorkflowManager.java
-│           │                   └── trash
-│           │                       └── TodoTrashHandler.java
+│           │                   └── service
+│           │                       ├── base
+│           │                       │   ├── TodoLocalServiceBaseImpl.java
+│           │                       │   └── TodoServiceBaseImpl.java
+│           │                       ├── http
+│           │                       │   ├── TodoServiceHttp.java
+│           │                       │   └── TodoServiceSoap.java
+│           │                       ├── impl
+│           │                       │   ├── TodoLocalServiceImpl.java
+│           │                       │   └── TodoServiceImpl.java
+│           │                       ├── persistence
+│           │                       │   └── impl
+│           │                       │       ├── TodoPersistenceImpl.java
+│           │                       │       └── constants
+│           │                       │           └── TodoPersistenceConstants.java
+│           │                       ├── util
+│           │                       │   └── TodoValidator.java
+│           │                       └── workflow
+│           │                           ├── TodoWorkflowHandler.java
+│           │                           └── TodoWorkflowManager.java
 │           └── resources
 │               ├── META-INF
 │               │   ├── module-hbm.xml
 │               │   ├── portlet-model-hints.xml
 │               │   ├── resource-actions
 │               │   │   └── default.xml
-│               │   ├── spring
-│               │   │   └── module-spring.xml
 │               │   └── sql
 │               │       ├── indexes.sql
 │               │       ├── sequences.sql
@@ -129,37 +138,71 @@ This command will create a service and a portlet as follows.
             │                       │   └── TodoAssetRendererFactory.java
             │                       ├── constants
             │                       │   └── TodoWebKeys.java
+            │                       ├── info
+            │                       │   └── display
+            │                       │       └── contributor
+            │                       │           └── TodoAssetInfoDisplayContributor.java
+            │                       ├── internal
+            │                       │   ├── display
+            │                       │   │   └── context
+            │                       │   │       ├── TodoDisplayContext.java
+            │                       │   │       └── TodoManagementToolbarDisplayContext.java
+            │                       │   └── security
+            │                       │       └── permission
+            │                       │           └── resource
+            │                       │               ├── TodoEntryPermission.java
+            │                       │               └── TodoPermission.java
             │                       ├── portlet
             │                       │   ├── TodoAdminPortlet.java
+            │                       │   ├── TodoAdminPortletProvider.java
+            │                       │   ├── TodoLayoutFinder.java
             │                       │   ├── TodoPanelApp.java
-            │                       │   ├── TodoPortletLayoutFinder.java
-            │                       │   ├── TodoWebPortlet.java
-            │                       │   └── action
-            │                       │       ├── TodoConfiguration.java
-            │                       │       ├── TodoConfigurationAction.java
-            │                       │       ├── TodoCrudMVCActionCommand.java
-            │                       │       ├── TodoCrudMVCRenderCommand.java
-            │                       │       ├── TodoFindEntryAction.java
-            │                       │       ├── TodoFindEntryHelper.java
-            │                       │       └── TodoViewMVCRenderCommand.java
-            │                       ├── social
-            │                       │   └── TodoActivityInterpreter.java
+            │                       │   ├── TodoPortlet.java
+            │                       │   ├── TodoPortletProvider.java
+            │                       │   ├── action
+            │                       │   │   ├── TodoAdminCrudMVCActionCommand.java
+            │                       │   │   ├── TodoAdminCrudMVCRenderCommand.java
+            │                       │   │   ├── TodoAdminViewMVCRenderCommand.java
+            │                       │   │   ├── TodoConfiguration.java
+            │                       │   │   ├── TodoConfigurationAction.java
+            │                       │   │   ├── TodoCrudMVCActionCommand.java
+            │                       │   │   ├── TodoCrudMVCRenderCommand.java
+            │                       │   │   ├── TodoExportMVCResourceCommand.java
+            │                       │   │   ├── TodoPortletLayoutFinder.java
+            │                       │   │   └── TodoViewMVCRenderCommand.java
+            │                       │   └── route
+            │                       │       └── TodoFriendlyURLMapper.java
             │                       ├── upload
             │                       │   └── TodoItemSelectorHelper.java
             │                       └── util
             │                           └── TodoViewHelper.java
             └── resources
                 ├── META-INF
+                │   ├── friendly-url-routes
+                │   │   └── routes.xml
                 │   └── resources
-                │       └── todo
+                │       ├── todo
+                │       │   ├── asset
+                │       │   │   ├── abstract.jsp
+                │       │   │   ├── full_content.jsp
+                │       │   │   └── preview.jsp
+                │       │   ├── configuration.jsp
+                │       │   ├── css
+                │       │   │   └── main.css
+                │       │   ├── edit.jsp
+                │       │   ├── edit_actions.jsp
+                │       │   ├── init.jsp
+                │       │   ├── view.jsp
+                │       │   └── view_record.jsp
+                │       └── todo_admin
                 │           ├── asset
                 │           │   ├── abstract.jsp
                 │           │   └── full_content.jsp
-                │           ├── configuration.jsp
+                │           ├── css
+                │           │   └── main.css
                 │           ├── edit.jsp
                 │           ├── edit_actions.jsp
                 │           ├── init.jsp
-                │           ├── search_results.jspf
                 │           ├── view.jsp
                 │           └── view_record.jsp
                 ├── content
