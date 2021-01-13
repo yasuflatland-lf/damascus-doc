@@ -14,7 +14,7 @@ There are the ```Employee``` model and ```Position``` model. In the ```Employee`
 {
   "projectName": "Employee",
   "packageName": "com.liferay.sb.employee",
-  "liferayVersion": "7.2",
+  "liferayVersion": "7.3",
   "applications": [{
       "model": "Employee",
       "title": "Employee Test",

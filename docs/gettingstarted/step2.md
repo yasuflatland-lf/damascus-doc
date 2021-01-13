@@ -7,11 +7,16 @@ permalink: /docs/gettingstarted/step2.html
 ---
 # Generate Service
 
+Let's navigate to the modules directory.
+```bash
+cd ./lrworkspace/modules
+```
+
 ## Generate base.json
 Run Damascus as follows
 
 ```bash
-damascus init -c Todo -p com.liferay.sb.test -v 7.2
+damascus init -c Todo -p com.liferay.sb.test -v 7.3
 ```
 
 Under the ```todo``` folder, ```base.json``` will be generated.
@@ -29,7 +34,7 @@ damascus create
 This command will create a service and a portlet as follows.
 
 ```bash
-./
+.
 ├── README.md
 ├── base.json
 ├── todo-api
@@ -76,7 +81,20 @@ This command will create a service and a portlet as follows.
 │           │               └── test
 │           │                   ├── internal
 │           │                   │   ├── search
-│           │                   │   │   └── TodoIndexer.java
+│           │                   │   │   ├── TodoSearchRegistrar.java
+│           │                   │   │   ├── TodoSearcher.java
+│           │                   │   │   ├── index
+│           │                   │   │   │   └── contributor
+│           │                   │   │   │       ├── TodoModelDocumentContributor.java
+│           │                   │   │   │       └── TodoModelIndexerWriterContributor.java
+│           │                   │   │   ├── query
+│           │                   │   │   │   └── contributor
+│           │                   │   │   │       ├── TodoKeywordQueryContributor.java
+│           │                   │   │   │       └── TodoModelPreFilterContributor.java
+│           │                   │   │   └── result
+│           │                   │   │       └── contributor
+│           │                   │   │           ├── TodoModelSummaryContributor.java
+│           │                   │   │           └── TodoModelVisibilityContributor.java
 │           │                   │   ├── security
 │           │                   │   │   └── permission
 │           │                   │   │       └── resource

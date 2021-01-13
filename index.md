@@ -26,7 +26,7 @@ Damascus is named after "**Damascus blade**", which is a strong / sharp blade ma
 
 ## About the project
 
-Damascus is &copy; 2018 by Yasuyuki Takeo.
+Damascus is &copy; 2021 by Yasuyuki Takeo.
 
 ### License
 

@@ -5,9 +5,10 @@ nav_order: 2
 permalink: /installation.html
 ---
 ## Requirements
-- Liferay 7.2 CE GA1 and higher.
-- Liferay 7.1 CE GA1 and higher.
-- Liferay 7.0 CE GA4 and Liferay DXP SP3 or higher versions.
+- Liferay 7.3 CE GA6 and higher.
+- Liferay 7.2 CE GA2 and higher.
+- Liferay 7.1 CE GA4 and higher.
+- Liferay 7.0 CE GA7 and Liferay DXP SP3 or higher versions.
 - Java 1.8 or above
 - gradle 3.0 or above need to be installed
 - jpm needs to be installed. (instruction to install is as follows)
